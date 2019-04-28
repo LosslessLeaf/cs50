@@ -1,22 +1,23 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <string.h>
 
 int main(void)
+
 {
     int height = get_int("Height: ");
-
-    string hashStart = "##";
-    string hashAdd = "#";
-    string space = " ";
+    int counter = height;
 
     for (int i = 0; i < height; i++)
     {
-        printf("%s", hashStart);
-        for (int j = 0; j < i; j++)
+        for (int j = 1; j < counter; j++)
         {
-            printf("%s", hashAdd);
+            printf("=");
         }
+        for (int k = 0; k < i + 1; k++)
+        {
+            printf("#");
+        }
+        counter -= 1;
         printf("\n");
     }
 }
