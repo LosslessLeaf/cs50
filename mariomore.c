@@ -4,12 +4,16 @@
 int main(void)
 
 {
-    int height = get_int("Height: ");
-    int counter = height;
+    int height;
+    do
+    {
+        height = get_int("Height: ");
 
-    // do {
-        if (height >= 1 || height <= 8)
+        if (height >= 1 && height <= 8)
         {
+            // height = get_int("Height: ");
+            int counter = height;
+
             for (int i = 0; i < height; i++)
             {
                 for (int j = 1; j < counter; j++)
@@ -20,29 +24,17 @@ int main(void)
                 {
                     printf("#");
                 }
+
                 printf("  ");
-                // for (int m = 0; m < height; m++)
-                // {
+
                 for (int n = 0; n < i + 1; n++)
                 {
                     printf("#");
                 }
-                // for (int f = height; f > 0; f--)
-                // {
-                //     printf("=");
-                // }
-                    // printf("\n");
-                // }
                 counter -= 1;
                 printf("\n");
             }
-
-
         }
-        else
-        {
-            height = get_int("Height: ");
-        }
-    // }
-    // while (height < 1 || height > 8);
+    }
+    while (height < 1 || height > 8);
 }
