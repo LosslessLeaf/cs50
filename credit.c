@@ -24,15 +24,12 @@ int cardChecker()
 
 
     card = get_long("Enter card number here: ");
-    // printf("Card number: %ld\n", card);
     if (card > 0)
     {
         count = log10(card) + 1;
-        // printf("Card length: %i\n", count);
 
         cardHolder = card;
 
-        // printf("=======One\n");
         do
         {
             card /= 10;
@@ -44,15 +41,12 @@ int cardChecker()
             {
 
                 sumOne += n / 10;
-                // printf("n/10: %ld\n", n / 10);
                 n = nHolder;
                 sumOne += n % 10;
-                // printf("nmod10: %ld\n", n % 10);
             }
             else
             {
                 sumOne += n;
-                // printf("n: %ld\n", n);
             }
 
             card /= 10;
@@ -61,9 +55,6 @@ int cardChecker()
 
         card = cardHolder;
 
-        // printf("sumOne: %ld\n", sumOne);
-
-        // printf("=======Two\n");
         do
         {
             n = card;
@@ -73,11 +64,7 @@ int cardChecker()
         }
         while (card != 0);
 
-        // printf("sumTwo: %ld\n", sumTwo);
-
         int check = (sumOne + sumTwo) % 10;
-
-        // printf("Check: %i\n", check);
 
         card = cardHolder;
         card /= pow(10, count - 2);
@@ -85,12 +72,9 @@ int cardChecker()
         card = cardHolder;
         card /= pow(10, count - 1);
         int firstOne = card;
-        // printf("First two: %i\n", firstTwo);
-        // printf("First one: %i\n", firstOne);
 
         if (check == 0)
         {
-            // printf("All good!\n");
             if ((firstTwo == 34 || firstTwo == 37) && count == 15)
             {
                 printf("AMEX\n");
