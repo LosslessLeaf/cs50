@@ -24,15 +24,15 @@ int cardChecker()
 
 
     card = get_long("Enter card number here: ");
-    printf("Card number: %ld\n", card);
+    // printf("Card number: %ld\n", card);
     if (card > 0)
     {
         count = log10(card) + 1;
-        printf("Card length: %i\n", count);
+        // printf("Card length: %i\n", count);
 
         cardHolder = card;
 
-        printf("=======One\n");
+        // printf("=======One\n");
         do
         {
             card /= 10;
@@ -40,19 +40,19 @@ int cardChecker()
             n %= 10;
             n *= 2;
             int nHolder = n;
-            if (n > 10)
+            if (n >= 10)
             {
 
                 sumOne += n / 10;
-                printf("%ld\n", n / 10);
+                // printf("n/10: %ld\n", n / 10);
                 n = nHolder;
                 sumOne += n % 10;
-                printf("%ld\n", n % 10);
+                // printf("nmod10: %ld\n", n % 10);
             }
             else
             {
                 sumOne += n;
-                printf("%ld\n", n);
+                // printf("n: %ld\n", n);
             }
 
             card /= 10;
@@ -61,29 +61,23 @@ int cardChecker()
 
         card = cardHolder;
 
-        printf("sumOne: %ld\n", sumOne);
+        // printf("sumOne: %ld\n", sumOne);
 
-        printf("=======Two\n");
+        // printf("=======Two\n");
         do
         {
             n = card;
             n %= 10;
-            // printf("%ld\n", n);
             sumTwo += n;
             card /= 100;
         }
         while (card != 0);
 
-        printf("sumTwo: %ld\n", sumTwo);
+        // printf("sumTwo: %ld\n", sumTwo);
 
         int check = (sumOne + sumTwo) % 10;
 
-        printf("Check: %i\n", check);
-
-        // printf("%f", pow(10, (count - 2)));
-        // card /= pow(10, (count - 2));
-        // printf("%ld\n", card);
-
+        // printf("Check: %i\n", check);
 
         card = cardHolder;
         card /= pow(10, count - 2);
@@ -91,17 +85,12 @@ int cardChecker()
         card = cardHolder;
         card /= pow(10, count - 1);
         int firstOne = card;
-        printf("First two: %i\n", firstTwo);
-        printf("First one: %i\n", firstOne);
-        // card = cardHolder;
-        // printf("%ld\n", card);
-
-
-        // American Express numbers start with 34 or 37; most MasterCard numbers start with 51, 52, 53, 54, or 55; and all Visa numbers start with 4.
+        // printf("First two: %i\n", firstTwo);
+        // printf("First one: %i\n", firstOne);
 
         if (check == 0)
         {
-            printf("All good!\n");
+            // printf("All good!\n");
             if ((firstTwo == 34 || firstTwo == 37) && count == 15)
             {
                 printf("AMEX\n");
@@ -125,8 +114,8 @@ int cardChecker()
         }
         else
         {
-            printf("No good!\n");
-            return 1;
+            printf("INVALID\n");
+            return false;
         }
     }
 
