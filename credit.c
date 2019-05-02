@@ -16,27 +16,31 @@ int cardChecker()
     long sumOne = 0;
     long sumTwo = 0;
     long cardHolder;
-    int legit = 0;
-    int counter = 0;
-    int total = 0;
     int count;
 
 
-
+    // Prompt user for card number
     card = get_long("Enter card number here: ");
+
+    // If card > 0, start check process
     if (card > 0)
     {
+        // gets count of card number
         count = log10(card) + 1;
 
+        // sets placeholder for card number so it can be mutated
         cardHolder = card;
 
+        // starts loop to get, starting with the second-to-last number,
+        // and iterates through, multiplying each by 2 and adding them to sumOne
         do
         {
             card /= 10;
-            n = card;
-            n %= 10;
-            n *= 2;
+            n = (card % 10) * 2;
             int nHolder = n;
+
+            // If n is greater than or equal to 10, split the double digit integer into two separate digits
+            // Add each separate digit to sumOne
             if (n >= 10)
             {
 
@@ -55,6 +59,9 @@ int cardChecker()
 
         card = cardHolder;
 
+        // starts loop to, starting with the last number,
+        // iterate through, multiplying each by 2 and adding them to sumTwo
+
         do
         {
             n = card;
@@ -64,14 +71,15 @@ int cardChecker()
         }
         while (card != 0);
 
+        card = cardHolder;
+
+        // Adds both sums and gets the remainder, if it is 0, then proceed, else print INVALID
+
         int check = (sumOne + sumTwo) % 10;
 
-        card = cardHolder;
-        card /= pow(10, count - 2);
-        int firstTwo = card;
-        card = cardHolder;
-        card /= pow(10, count - 1);
-        int firstOne = card;
+        int firstTwo = (card / pow(10, count - 2));
+
+        int firstOne = (card / pow(10, count - 1));
 
         if (check == 0)
         {
