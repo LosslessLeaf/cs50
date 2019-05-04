@@ -31,7 +31,7 @@ int cardChecker()
         // sets placeholder for card number so it can be mutated
         cardHolder = card;
 
-        // starts loop to get, starting with the second-to-last number,
+        // starts loop with the second-to-last number
         // and iterates through, multiplying each by 2 and adding them to sumOne
         do
         {
@@ -59,8 +59,7 @@ int cardChecker()
 
         card = cardHolder;
 
-        // starts loop to, starting with the last number,
-        // iterate through, multiplying each by 2 and adding them to sumTwo
+        // starting with the last number, iterate through and add each digit to sumTwo
 
         do
         {
