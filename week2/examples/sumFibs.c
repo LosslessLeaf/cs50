@@ -13,7 +13,6 @@ int sumFibs(int num)
     int firstFib = 1;
     int middleFib = 1;
     int trailingFib = 0;
-    int counter = 0;
     int oddSum = 0;
 
     for (int i = 0; i < num; i++)
