@@ -5,7 +5,7 @@ int sumFibs(int);
 
 int main(void)
 {
-    sumFibs(902);
+    sumFibs(121393);
 }
 
 int sumFibs(int num)
@@ -31,7 +31,7 @@ int sumFibs(int num)
 
             if (trailingFib % 2 != 0)
             {
-                if ((trailingFib) >= num)
+                if ((trailingFib) > num)
                 {
                     break;
                 }
