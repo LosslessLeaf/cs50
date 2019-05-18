@@ -17,75 +17,90 @@ int main(int argc, string argv[])
             if (!(isalpha(argv[1][i])))
             {
                 printf("Usage: ./vigenere keyword\n");
-                return 0;
+                return 1;
             }
         }
         string keyword = argv[1];
         string plaintext = get_string("plaintext: ");
 
+        printf("ciphertext: \n");
         for (i = 0; i < strlen(plaintext); i++)
         {
-            char holder = keyword[i];
+            // char holder = keyword[i];
             int key = (tolower(keyword[i % strlen(keyword)]) - 'a');
-            // printf("%i\n", key);
+            printf("key: %i, test: %c %i\n", key, plaintext[i], plaintext[i]);
 
             if (islower(plaintext[i]))
             {
+
                 if (i < strlen(plaintext) && i < strlen(keyword))
                 {
-
+                    printf("%i %i\n", key, plaintext[i]);
                     plaintext[i] = plaintext[i] + key;
-                    if (plaintext[i] > 122)
-                    {
-                        plaintext[i] = plaintext[i] - 'z' + 'a';
-                        printf("%c %c\n", plaintext[i], keyword[i]);
-                    }
-                    printf("%c %c\n", plaintext[i], keyword[i]);
+                    printf("%i\n", plaintext[i]);
+                    // if (plaintext[i] > 122)
+                    // {
+                    //     plaintext[i] = (((plaintext[i] + key) - 122) + 'a') - 1;
+                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
+                    // }
+                    // else
+                    // {
+                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
+                    // }
 
                 }
                 else if (i < strlen(plaintext) && i >= strlen(keyword))
                 {
-                    plaintext[i] = plaintext[i] + key;
-                    if (plaintext[i] > 122)
-                    {
-                        plaintext[i] = (plaintext[i] - 'z') + 'a';
-                        printf("%c %c\n", plaintext[i], keyword[i % strlen(keyword)]);
-                    }
-                    else
-                    {
-                        printf("%c %c\n", plaintext[i], keyword[i % strlen(keyword)]);
-                    }
+                    // plaintext[i] = plaintext[i] + key;
+                    // printf("%i\n", plaintext[i]);
+                    // if (plaintext[i] > 122)
+                    // {
+                    //     plaintext[i] = ((plaintext[i] - 'z') + 'a') - 1;
+                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
+                    // }
+                    // else
+                    // {
+                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
+                    // }
                 }
             }
-            else if (isupper(plaintext[i]))
-            {
-                if (i < strlen(plaintext) && i < strlen(keyword))
-                {
+        //     else if (isupper(plaintext[i]))
+        //     {
+        //         if (i < strlen(plaintext) && i < strlen(keyword))
+        //         {
 
-                    plaintext[i] = plaintext[i] + key;
-                    if (plaintext[i] > 90)
-                    {
-                        plaintext[i] = plaintext[i] - 'Z' + 'A';
-                        printf("%c %c\n", plaintext[i], keyword[i]);
-                    }
-                    printf("%c %c\n", plaintext[i], keyword[i]);
+        //             plaintext[i] = plaintext[i] + key;
+        //             if (plaintext[i] > 90)
+        //             {
+        //                 plaintext[i] = (plaintext[i] - 'Z' + 'A') - 1;
+        //                 printf("%c", plaintext[i]);
+        //             }
+        //             else
+        //             {
+        //                 printf("%c", plaintext[i]);
+        //             }
 
-                }
-                else if (i < strlen(plaintext) && i >= strlen(keyword))
-                {
-                    plaintext[i] = plaintext[i] + key;
-                    if (plaintext[i] > 90)
-                    {
-                        plaintext[i] = (plaintext[i] - 'Z') + 'A';
-                        printf("%c %c\n", plaintext[i], keyword[i % strlen(keyword)]);
-                    }
-                    else
-                    {
-                        printf("%c %c\n", plaintext[i], keyword[i % strlen(keyword)]);
-                    }
-                }
-            }
+        //         }
+        //         else if (i < strlen(plaintext) && i >= strlen(keyword))
+        //         {
+        //             plaintext[i] = plaintext[i] + key;
+        //             if (plaintext[i] > 90)
+        //             {
+        //                 plaintext[i] = ((plaintext[i] - 'Z') + 'A') - 1;
+        //                 printf("%c", plaintext[i]);
+        //             }
+        //             else
+        //             {
+        //                 printf("%c", plaintext[i]);
+        //             }
+        //         }
+        //     }
+        //     else
+        //     {
+        //         printf("%c", plaintext[i]);
+        //     }
         }
+        // printf("\n");
     }
     else
     {
