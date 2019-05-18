@@ -45,5 +45,5 @@ int sumFibs(int num)
         }
     }
     printf("%i\n", oddSum);
-    return 1;
+    return oddSum;
 }
