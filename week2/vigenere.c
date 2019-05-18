@@ -10,11 +10,11 @@ int main(int argc, string argv[])
     if (argc > 1 && argc < 3)
     {
         int len =  strlen(argv[1]);
-        int i;
+        int j;
 
-        for (i = 0; i < len; i++)
+        for (j = 0; j < len; j++)
         {
-            if (!(isalpha(argv[1][i])))
+            if (!(isalpha(argv[1][j])))
             {
                 printf("Usage: ./vigenere keyword\n");
                 return 1;
@@ -23,84 +23,96 @@ int main(int argc, string argv[])
         string keyword = argv[1];
         string plaintext = get_string("plaintext: ");
 
-        printf("ciphertext: \n");
-        for (i = 0; i < strlen(plaintext); i++)
+        int i = 0;
+        printf("ciphertext: ");
+        for (j = 0; j < strlen(plaintext); j++)
         {
-            // char holder = keyword[i];
-            int key = (tolower(keyword[i % strlen(keyword)]) - 'a');
-            printf("key: %i, test: %c %i\n", key, plaintext[i], plaintext[i]);
 
-            if (islower(plaintext[i]))
+
+            if (isalpha(plaintext[j]))
             {
+                int key = (tolower(keyword[i % strlen(keyword)]) - 'a');
+                long newLetter = plaintext[j];
+                char letter;
 
-                if (i < strlen(plaintext) && i < strlen(keyword))
+                if (islower(plaintext[j]))
                 {
-                    printf("%i %i\n", key, plaintext[i]);
-                    plaintext[i] = plaintext[i] + key;
-                    printf("%i\n", plaintext[i]);
-                    // if (plaintext[i] > 122)
-                    // {
-                    //     plaintext[i] = (((plaintext[i] + key) - 122) + 'a') - 1;
-                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
-                    // }
-                    // else
-                    // {
-                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
-                    // }
 
+                    if (j < strlen(plaintext) && j < strlen(keyword))
+                    {
+                        newLetter = newLetter + key;
+                        if (newLetter > 122)
+                        {
+                            newLetter = ((newLetter - 'z') + 'a') - 1;
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                        else
+                        {
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+
+                    }
+                    else if (j < strlen(plaintext) && j >= strlen(keyword))
+                    {
+                        newLetter = newLetter + key;
+                        if (newLetter > 122)
+                        {
+                            newLetter = ((newLetter - 'z') + 'a') - 1;
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                        else
+                        {
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                    }
                 }
-                else if (i < strlen(plaintext) && i >= strlen(keyword))
+                else if (isupper(plaintext[j]))
                 {
-                    // plaintext[i] = plaintext[i] + key;
-                    // printf("%i\n", plaintext[i]);
-                    // if (plaintext[i] > 122)
-                    // {
-                    //     plaintext[i] = ((plaintext[i] - 'z') + 'a') - 1;
-                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
-                    // }
-                    // else
-                    // {
-                    //     printf("%c %i\n", plaintext[i], plaintext[i]);
-                    // }
+                    if (j < strlen(plaintext) && j < strlen(keyword))
+                    {
+
+                        newLetter = newLetter + key;
+                        if (newLetter > 90)
+                        {
+                            newLetter = (newLetter - 'Z' + 'A') - 1;
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                        else
+                        {
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+
+                    }
+                    else if (j < strlen(plaintext) && j >= strlen(keyword))
+                    {
+                        newLetter = newLetter + key;
+                        if (newLetter > 90)
+                        {
+                            newLetter = ((newLetter - 'Z') + 'A') - 1;
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                        else
+                        {
+                            letter = newLetter;
+                            printf("%c", letter);
+                        }
+                    }
                 }
+                i++;
             }
-        //     else if (isupper(plaintext[i]))
-        //     {
-        //         if (i < strlen(plaintext) && i < strlen(keyword))
-        //         {
-
-        //             plaintext[i] = plaintext[i] + key;
-        //             if (plaintext[i] > 90)
-        //             {
-        //                 plaintext[i] = (plaintext[i] - 'Z' + 'A') - 1;
-        //                 printf("%c", plaintext[i]);
-        //             }
-        //             else
-        //             {
-        //                 printf("%c", plaintext[i]);
-        //             }
-
-        //         }
-        //         else if (i < strlen(plaintext) && i >= strlen(keyword))
-        //         {
-        //             plaintext[i] = plaintext[i] + key;
-        //             if (plaintext[i] > 90)
-        //             {
-        //                 plaintext[i] = ((plaintext[i] - 'Z') + 'A') - 1;
-        //                 printf("%c", plaintext[i]);
-        //             }
-        //             else
-        //             {
-        //                 printf("%c", plaintext[i]);
-        //             }
-        //         }
-        //     }
-        //     else
-        //     {
-        //         printf("%c", plaintext[i]);
-        //     }
+            else
+            {
+                printf("%c", plaintext[j]);
+            }
         }
-        // printf("\n");
+        printf("\n");
     }
     else
     {
