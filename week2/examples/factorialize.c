@@ -10,7 +10,7 @@ int main(void)
 
 long long factorialize(int num)
 {
-    int factorial = num;
+    long long factorial = num;
     int updater = num;
     if (num == 0 || num == 1)
     {
@@ -24,7 +24,7 @@ long long factorialize(int num)
             updater -= 1;
             factorial *= updater;
         }
-        printf("%i\n", factorial);
+        printf("%lli\n", factorial);
         return factorial;
     }
 }
